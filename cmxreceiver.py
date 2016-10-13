@@ -33,11 +33,13 @@ from pprint import pprint
 from flask import Flask
 from flask import json
 from flask import request
+import sys, getopt
 
+############## USER DEFINED SETTINGS ###############
 # MERAKI SETTINGS
-validator = "8e0846499d9a3f6c23f7868c4c25b9d6325035f5"
-secret = "supersecret"
-version = "2.0" # This code was written to support the JSON version specified
+validator = "EnterYourValidator"
+secret = "EnterYourSecret"
+version = "2.0" # This code was written to support the CMX JSON version specified
 
 # Save CMX Data
 def save_data(data):
@@ -45,10 +47,9 @@ def save_data(data):
     # CHANGE ME - send 'data' to a database or storage system
     pprint(data, indent=1)
 
+
+####################################################
 app = Flask(__name__)
-
-
-###################################
 
 # Respond to Meraki with validator
 @app.route('/', methods=['GET'])
@@ -94,5 +95,31 @@ def get_cmxJSON():
     # Return success message
     return "CMX POST Received"
 
+
+# Launch application with supplied arguments
+
+def main(argv):
+    global validator
+    global secret
+
+    try:
+       opts, args = getopt.getopt(argv,"hv:s:",["validator=","secret="])
+    except getopt.GetoptError:
+       print 'cmxreceiver.py -v <validator> -s <secret>'
+       sys.exit(2)
+    for opt, arg in opts:
+       if opt == '-h':
+           print 'cmxreceiver.py -v <validator> -s <secret>'
+           sys.exit()
+       elif opt in ("-v", "--validator"):
+           validator = arg
+       elif opt in ("-s", "--secret"):
+           secret = arg
+
+    print 'validator: ', validator
+    print 'secret: ', secret
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    main(sys.argv[1:])
+    app.run(port=5000,debug=False)
