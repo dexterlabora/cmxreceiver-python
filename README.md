@@ -37,7 +37,7 @@ flask run -h 0.0.0.0
  * Running on http://0.0.0.0:5000/
 ```
 
-##Defaults
+## Defaults
 * Port: 5000
 * CMX Post URL: http://yourserver:5000/
 
