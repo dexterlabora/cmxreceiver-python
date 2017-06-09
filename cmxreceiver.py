@@ -105,19 +105,19 @@ def main(argv):
     try:
        opts, args = getopt.getopt(argv,"hv:s:",["validator=","secret="])
     except getopt.GetoptError:
-       print 'cmxreceiver.py -v <validator> -s <secret>'
+       print ('cmxreceiver.py -v <validator> -s <secret>')
        sys.exit(2)
     for opt, arg in opts:
        if opt == '-h':
-           print 'cmxreceiver.py -v <validator> -s <secret>'
+           print ('cmxreceiver.py -v <validator> -s <secret>')
            sys.exit()
        elif opt in ("-v", "--validator"):
            validator = arg
        elif opt in ("-s", "--secret"):
            secret = arg
 
-    print 'validator: ', validator
-    print 'secret: ', secret
+    print ('validator: '+validator)
+    print ('secret: '+secret)
 
 
 if __name__ == '__main__':

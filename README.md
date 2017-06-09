@@ -24,15 +24,26 @@ http://flask.pocoo.org/docs/0.12/
 ```
 $ git clone <<this repo>>
 ```
+### Direct Run with Python3
 * Option 1 - Basic Receiver
 ```
-export FLASK_APP=cmxreceiver.py
+python3 cmxreceiver.py -v <validator> -s <secret>'
+```
+* Option 2 - Receiver with MongoDB
+```
+python3 cmxreceiver.py-mongodb.py -v <validator> -s <secret>'
+```
+
+### Via Flask
+* Option 1 - Basic Receiver
+```
+export FLASK_APP=cmxreceiver.py -v yourValidatorKey -s yourSecret
 flask run -h 0.0.0.0
  * Running on http://0.0.0.0:5000/
 ```
 * Option 2 - Receiver with MongoDB
 ```
-export FLASK_APP=cmxreceiver-mongodb.py
+export FLASK_APP=cmxreceiver-mongodb.py -v yourValidatorKey -s yourSecret
 flask run -h 0.0.0.0
  * Running on http://0.0.0.0:5000/
 ```
@@ -40,6 +51,14 @@ flask run -h 0.0.0.0
 ## Defaults
 * Port: 5000
 * CMX Post URL: http://yourserver:5000/
+
+## TIP
+* use ngrok to expose port 5000
+```
+ngrok http 5000
+```
+Then use the new url it creates as your base URL. `https://2a6eed03.ngrok.io/`
+
 
 
 # Cisco Meraki CMX Location API Documentation
