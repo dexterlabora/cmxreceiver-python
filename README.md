@@ -32,7 +32,7 @@ python3 cmxreceiver.py -v <validator> -s <secret>'
 ```
 * Option 2 - Receiver with MongoDB
 ```
-python3 cmxreceiver.py-mongodb.py -v <validator> -s <secret>'
+python3 cmxreceiver-mongodb.py -v <validator> -s <secret>'
 ```
 
 ### Via Flask
