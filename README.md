@@ -1,11 +1,12 @@
 ### cmxreceiver-python
-# NodeJS CMX Receiver
+
 
 ### A basic web service to accept CMX data from a Cisco Meraki network
 - Accept a GET request from Meraki and respond with a validator
 - Meraki will POST to server, if validated.
 - POST will contain a secret, which can be verified by the server.
 - JSON data will be in the req.body.data. This will be available in the cmxData function's data object.
+*note: CMX is now called Scanning in Meraki documentation
 
 ## cmxreceiver.py
 -- The basic app will only place the data received on the console. 
