@@ -6,7 +6,7 @@
 - Meraki will POST to server, if validated.
 - POST will contain a secret, which can be verified by the server.
 - JSON data will be in the req.body.data. This will be available in the cmxData function's data object.
-*note: CMX is now called Scanning in Meraki documentation
+*note: CMX is now called Scanning API in Meraki documentation
 
 ## cmxreceiver.py
 -- The basic app will only place the data received on the console. 
