@@ -3,7 +3,7 @@
 """
 Cisco Meraki CMX Receiver
 
-A simple example demonstrating how to interact with the CMX API.
+A simple example demonstrating how to interact with the Location Scanning API.
 
 How it works:
 - Meraki access points will listen for WiFi clients that are searching for a network to join and log the events.
@@ -23,9 +23,10 @@ https://documentation.meraki.com/MR/Monitoring_and_Reporting/CMX_Analytics#CMX_L
 
 Written by Cory Guynn
 2016
+Updated (2020)
 
 www.InternetOfLEGO.com
-Developers.Meraki.com
+Meraki.io
 """
 
 # Libraries
@@ -39,11 +40,10 @@ import sys, getopt
 # MERAKI SETTINGS
 validator = "EnterYourValidator"
 secret = "EnterYourSecret"
-version = "2.0" # This code was written to support the CMX JSON version specified
 
 # Save CMX Data
 def save_data(data):
-    print("---- SAVING CMX DATA ----")
+    print("---- SAVING Location DATA ----")
     # CHANGE ME - send 'data' to a database or storage system
     pprint(data, indent=1)
 
@@ -73,27 +73,12 @@ def get_cmxJSON():
     else:
         print("secret verified: ", cmxdata['secret'])
 
-    # Verify version
-    if cmxdata['version'] != version:
-        print("invalid version")
-        return("invalid version",400)
-    else:
-        print("version verified: ", cmxdata['version'])
-
-    # Determine device type
-    if cmxdata['type'] == "DevicesSeen":
-        print("WiFi Devices Seen")
-    elif cmxdata['type'] == "BluetoothDevicesSeen":
-        print("Bluetooth Devices Seen")
-    else:
-        print("Unknown Device 'type'")
-        return("invalid device type",403)
-
+   
     # Do something with data (commit to database)
     save_data(cmxdata)
 
     # Return success message
-    return "CMX POST Received"
+    return "Location Scanning POST Received"
 
 
 # Launch application with supplied arguments

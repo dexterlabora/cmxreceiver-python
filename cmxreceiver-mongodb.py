@@ -14,7 +14,7 @@ the Meraki network's validator.
 - Meraki will then send a JSON message to this application's POST URL (i.e. http://yourserver/ method=[POST])
 - The JSON is checked to ensure it matches the expected secret, version and observation device type.
 - The resulting data is sent to the "save_data(data)" function where it can be sent to a databse or other service
-    - This example will simply print the CMX data to the console.
+    - This example will commit the database to a mongodb server
 
 Default port: 5000
 
